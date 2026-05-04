@@ -33,9 +33,9 @@ const LabourHistory = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-24">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-teal-500 to-emerald-600 px-4 pt-12 pb-8 sticky top-0 z-20 shadow-lg">
+    <div className="min-h-screen bg-slate-50 pb-12">
+      {/* Header - Scrollable */}
+      <div className="bg-gradient-to-r from-teal-500 to-emerald-600 px-4 pt-12 pb-8 shadow-lg">
         <div className="flex items-center gap-4">
           <button 
             onClick={() => navigate(-1)}

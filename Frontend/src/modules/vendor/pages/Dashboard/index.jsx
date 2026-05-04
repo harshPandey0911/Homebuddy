@@ -193,6 +193,21 @@ const Dashboard = memo(() => {
       setIsOnline(apiStats.isOnline);
     }
 
+    // Update vendorData in localStorage to keep subscription status and other fields in sync
+    // If we reached here, the subscription is active (otherwise middleware would have blocked it)
+    try {
+      const currentVendorData = JSON.parse(localStorage.getItem('vendorData') || '{}');
+      if (currentVendorData.id) {
+        localStorage.setItem('vendorData', JSON.stringify({
+          ...currentVendorData,
+          isSubscriptionActive: apiStats.isSubscriptionActive ?? true,
+          isOnline: apiStats.isOnline ?? currentVendorData.isOnline
+        }));
+      }
+    } catch (e) {
+      console.warn('Failed to sync vendorData in localStorage:', e);
+    }
+
     // Recent jobs (non-requested)
     const recentJobsData = otherBookings.slice(0, 3).map(booking => ({
       id: booking._id,
@@ -237,15 +252,10 @@ const Dashboard = memo(() => {
   }, [processApiResponse]);
 
   useEffect(() => {
-    // Check if subscription is active
-    const vendorData = JSON.parse(localStorage.getItem('vendorData') || '{}');
-    if (vendorData.id && !vendorData.isSubscriptionActive) {
-      console.log('[Dashboard] Vendor subscription not active, redirecting...');
-      navigate('/vendor/subscription', { replace: true });
-      return;
-    }
+    // loadDashboardData handles the subscription check implicitly via API call (interceptor handles 403)
+    // This prevents the "flicker" where it redirects to subscription page based on stale localStorage
     loadDashboardData();
-  }, [loadDashboardData, navigate]);
+  }, [loadDashboardData]);
 
   // Check for redirected state (to open a specific alert modal)
   useEffect(() => {

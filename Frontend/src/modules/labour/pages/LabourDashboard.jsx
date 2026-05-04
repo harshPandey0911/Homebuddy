@@ -227,8 +227,8 @@ const LabourDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/20 to-emerald-50/10 pb-8">
 
-      {/* Header - Sticky */}
-      <div className="sticky top-0 z-[40] bg-gradient-to-r from-teal-500 to-emerald-600 px-4 pt-12 pb-16 relative overflow-hidden shadow-lg shadow-teal-900/10">
+      {/* Header - Scrollable */}
+      <div className="bg-gradient-to-r from-teal-500 to-emerald-600 px-4 pt-12 pb-16 relative overflow-hidden shadow-lg shadow-teal-900/10">
         <div className="absolute inset-0 bg-black/10" />
         <div className="absolute -top-8 -right-8 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
         <div className="relative flex justify-between items-start">
