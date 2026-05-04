@@ -111,7 +111,7 @@ const Header = memo(({
 
   return (
     <header
-      className="sticky top-0 z-40 w-full bg-[#fdfbff]"
+      className="w-full bg-[#fdfbff]"
       style={{
         borderBottom: '1.5px solid rgba(150, 52, 247, 0.15)',
       }}

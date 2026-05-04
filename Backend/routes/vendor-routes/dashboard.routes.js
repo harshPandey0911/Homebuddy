@@ -8,12 +8,13 @@ const {
   getWorkerPerformance,
   getServicePerformance
 } = require('../../controllers/vendorControllers/vendorDashboardController');
+const { checkSubscription } = require('../../middleware/roleMiddleware');
 
 // Routes
-router.get('/dashboard/stats', authenticate, isVendor, getDashboardStats);
-router.get('/dashboard/revenue', authenticate, isVendor, getRevenueAnalytics);
-router.get('/dashboard/workers', authenticate, isVendor, getWorkerPerformance);
-router.get('/dashboard/services', authenticate, isVendor, getServicePerformance);
+router.get('/dashboard/stats', authenticate, isVendor, checkSubscription, getDashboardStats);
+router.get('/dashboard/revenue', authenticate, isVendor, checkSubscription, getRevenueAnalytics);
+router.get('/dashboard/workers', authenticate, isVendor, checkSubscription, getWorkerPerformance);
+router.get('/dashboard/services', authenticate, isVendor, checkSubscription, getServicePerformance);
 
 module.exports = router;
 

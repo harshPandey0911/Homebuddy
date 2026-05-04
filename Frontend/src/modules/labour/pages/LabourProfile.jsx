@@ -188,9 +188,9 @@ const LabourProfile = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-24">
-      {/* Header - Sticky */}
-      <div className="sticky top-0 z-[1001] bg-gradient-to-r from-teal-500 to-emerald-600 px-4 pt-12 pb-16 relative overflow-hidden shadow-lg shadow-teal-900/10">
+    <div className="h-[100dvh] bg-slate-50 overflow-hidden flex flex-col">
+      {/* Header - Compact & Non-sticky */}
+      <div className="bg-gradient-to-r from-teal-500 to-emerald-600 px-4 pt-10 pb-12 relative overflow-hidden shadow-lg shadow-teal-900/10 flex-shrink-0">
         <div className="absolute inset-0 bg-black/5" />
         <div className="relative flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -212,61 +212,61 @@ const LabourProfile = () => {
         </div>
       </div>
 
-      <div className="px-4 -mt-10 relative z-[10]">
-        {/* Profile Card */}
-        <div className="bg-white rounded-[2.5rem] shadow-xl shadow-teal-900/5 p-6 mb-4 border border-gray-100">
+      <div className="px-4 -mt-8 relative z-[10] flex-1 overflow-hidden">
+        {/* Profile Card - Compact */}
+        <div className="bg-white rounded-[2rem] shadow-sm p-4 mb-4 border border-gray-100">
           <div className="flex flex-col items-center text-center">
             {/* Avatar */}
-            <div className="relative mb-4 group">
+            <div className="relative mb-3 group">
               {profile?.profilePhoto ? (
                 <img 
                   src={profile.profilePhoto} 
                   alt={profile.name} 
-                  className="w-24 h-24 rounded-[2rem] object-cover border-4 border-teal-50 shadow-inner"
+                  className="w-20 h-20 rounded-[1.5rem] object-cover border-2 border-teal-50 shadow-sm"
                 />
               ) : (
-                <div className="w-24 h-24 rounded-[2rem] bg-teal-50 flex items-center justify-center border-4 border-teal-50">
-                  <span className="text-4xl font-black text-teal-600">{profile?.name?.[0]?.toUpperCase()}</span>
+                <div className="w-20 h-20 rounded-[1.5rem] bg-teal-50 flex items-center justify-center border-2 border-teal-50">
+                  <span className="text-3xl font-black text-teal-600">{profile?.name?.[0]?.toUpperCase()}</span>
                 </div>
               )}
-              <div className="absolute -bottom-1 -right-1 bg-white p-2 rounded-xl shadow-lg border border-gray-100 text-teal-600">
-                <FiCamera className="w-4 h-4" />
+              <div className="absolute -bottom-1 -right-1 bg-white p-1.5 rounded-lg shadow-md border border-gray-100 text-teal-600">
+                <FiCamera className="w-3.5 h-3.5" />
               </div>
             </div>
 
             {isEditing ? (
-              <div className="w-full space-y-3">
+              <div className="w-full space-y-2">
                 <div className="relative">
-                  <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <FiUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <input 
                     type="text" 
                     value={editData.name}
                     onChange={e => setEditData({...editData, name: e.target.value})}
                     placeholder="Full Name"
-                    className="w-full bg-gray-50 border border-gray-100 rounded-2xl py-3.5 pl-12 pr-4 text-sm font-bold text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-xl py-2.5 pl-10 pr-4 text-sm font-bold text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
                   />
                 </div>
                 <div className="relative">
-                  <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  <FiPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <input 
                     type="tel" 
                     value={editData.phone}
                     onChange={e => setEditData({...editData, phone: e.target.value})}
                     placeholder="Phone Number"
-                    className="w-full bg-gray-50 border border-gray-100 rounded-2xl py-3.5 pl-12 pr-4 text-sm font-bold text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
+                    className="w-full bg-gray-50 border border-gray-100 rounded-xl py-2.5 pl-10 pr-4 text-sm font-bold text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-all"
                   />
                 </div>
                 <div className="flex gap-2">
                   <button 
                     onClick={handleUpdate}
                     disabled={saving}
-                    className="flex-1 bg-teal-500 text-white py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg shadow-teal-500/20 active:scale-95 transition-all"
+                    className="flex-1 bg-teal-500 text-white py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-all"
                   >
-                    {saving ? <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><FiCheck /> Save Changes</>}
+                    {saving ? <div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><FiCheck /> Save</>}
                   </button>
                   <button 
                     onClick={() => setIsEditing(false)}
-                    className="px-6 bg-gray-100 text-gray-500 py-3.5 rounded-2xl font-black text-xs uppercase tracking-widest active:scale-95 transition-all"
+                    className="px-4 bg-gray-100 text-gray-500 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest active:scale-95 transition-all"
                   >
                     <FiX />
                   </button>
@@ -274,12 +274,12 @@ const LabourProfile = () => {
               </div>
             ) : (
               <>
-                <h2 className="text-2xl font-black text-gray-900 leading-tight">{profile?.name}</h2>
-                <p className="text-gray-400 text-sm font-bold mt-0.5 tracking-tight">+91 {profile?.phone}</p>
+                <h2 className="text-xl font-black text-gray-900 leading-tight">{profile?.name}</h2>
+                <p className="text-gray-400 text-[11px] font-bold mt-0.5 tracking-tight">+91 {profile?.phone}</p>
                 
                 <button 
                   onClick={() => setIsEditing(true)}
-                  className="mt-6 px-6 py-2.5 bg-teal-50 text-teal-600 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:bg-teal-100 transition-colors active:scale-95"
+                  className="mt-3 px-4 py-2 bg-teal-50 text-teal-600 rounded-lg font-black text-[9px] uppercase tracking-widest flex items-center gap-1.5 hover:bg-teal-100 transition-colors active:scale-95"
                 >
                   <FiEdit2 className="w-3 h-3" /> Edit Profile
                 </button>
@@ -288,9 +288,9 @@ const LabourProfile = () => {
           </div>
         </div>
 
-        {/* Map Section */}
-        <div className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden mb-4">
-            <div className="p-5 pb-3 flex items-center justify-between">
+        {/* Map Section - Compact */}
+        <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+            <div className="p-4 pb-2 flex items-center justify-between">
                 <div>
                     <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest">Live Location</p>
                     <h3 className="text-sm font-black text-gray-900 mt-0.5">Current Work Area</h3>
@@ -304,7 +304,7 @@ const LabourProfile = () => {
                 </button>
             </div>
             
-            <div className="h-48 w-full relative z-0">
+            <div className="h-32 w-full relative z-0">
                 {location ? (
                     <MapContainer center={[location.lat, location.lng]} zoom={15} style={{ height: '100%', width: '100%' }}>
                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -321,10 +321,10 @@ const LabourProfile = () => {
             </div>
         </div>
 
-        {/* Details Grid */}
-        <div className="space-y-3">
-          <div className="bg-white rounded-[2rem] p-5 shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-500 flex-shrink-0">
+        {/* Details Grid - Compact */}
+        <div className="space-y-2">
+          <div className="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500 flex-shrink-0">
               <FiBriefcase className="w-5 h-5" />
             </div>
             <div className="flex-1">
@@ -339,8 +339,8 @@ const LabourProfile = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-[2rem] p-5 shadow-sm border border-gray-100 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500 flex-shrink-0">
+          <div className="bg-white rounded-3xl p-4 shadow-sm border border-gray-100 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 flex-shrink-0">
               <FiMapPin className="w-5 h-5" />
             </div>
             <div>

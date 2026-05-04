@@ -118,7 +118,7 @@ const LabourLogin = () => {
   };
 
   return (
-    <div className="min-h-[100dvh] bg-gradient-to-br from-slate-50 via-teal-50/30 to-emerald-50/20 flex flex-col justify-center py-12 px-4 relative overflow-hidden">
+    <div className="h-[100dvh] bg-gradient-to-br from-slate-50 via-teal-50/30 to-emerald-50/20 flex flex-col justify-center py-12 px-4 relative overflow-hidden">
       {/* Background blobs */}
       <div className="absolute top-[-15%] left-[-10%] w-[45%] h-[45%] bg-teal-400 opacity-[0.04] rounded-full blur-3xl" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-400 opacity-[0.05] rounded-full blur-3xl" />
